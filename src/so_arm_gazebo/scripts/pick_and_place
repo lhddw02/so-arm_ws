@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+"""Executable entry point installed by ament_cmake."""
+
+from so_arm_gazebo.pick_and_place import main
+
+if __name__ == '__main__':
+    raise SystemExit(main())

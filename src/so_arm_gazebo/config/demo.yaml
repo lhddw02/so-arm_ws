@@ -1,0 +1,27 @@
+pick_and_place:
+  ros__parameters:
+    use_sim_time: true
+    # All world coordinates are metres; joint angles are radians.
+    base_height: 0.60
+    source_position: [0.0, -0.22, 0.610]
+    destination_position: [0.11, -0.18, 0.610]
+    object_name: pick_cube
+    approach_height: 0.10
+    release_clearance: 0.003
+    # TCP is xyz=[0,-0.100,0] in the URDF gripper frame.
+    # These offline IK solutions keep the gripper's -Y axis pointing downward.
+    home: [0.0, 1.6569670531, -1.5806712649, 1.1529205386, 0.0]
+    pick: [0.0, 1.7684468165, -1.0210583541, 0.4818278644, 0.0]
+    lift: [0.0, 1.6569670531, -1.5806712649, 1.1529205386, 0.0]
+    transfer: [0.6844335123, 1.6497761515, -1.5728717730, 1.1523105234, 0.0]
+    place: [0.6844355125, 1.7498382254, -1.0237518840, 0.5031285604, 0.0]
+    retreat: [0.6844335123, 1.6497761515, -1.5728717730, 1.1523105234, 0.0]
+    gripper_open: 0.8
+    gripper_closed: 0.0
+    # Peak quintic speed, including interpolation, stays below the URDF's 1 rad/s.
+    max_joint_velocity: 0.6
+    minimum_motion_duration: 2.0
+    startup_timeout: 60.0
+    operation_timeout: 30.0
+    position_tolerance: 0.015
+    settle_duration: 1.0

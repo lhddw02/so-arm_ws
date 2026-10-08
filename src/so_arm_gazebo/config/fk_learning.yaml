@@ -1,0 +1,27 @@
+fk_learning:
+  ros__parameters:
+    use_sim_time: true
+    base_height: 0.60
+    control_rate: 20.0
+    report_rate: 10.0
+    max_joint_velocity: 0.6
+    minimum_motion_duration: 0.25
+    startup_timeout: 60.0
+    trail_length: 250
+
+fk_sliders:
+  ros__parameters:
+    use_sim_time: true
+    rate: 20
+    publish_default_positions: true
+    publish_default_velocities: false
+    publish_default_efforts: false
+    # Keep JSP's typed default source_list empty. An explicit [] in a Humble
+    # parameter file is untyped and can leave this parameter uninitialized.
+    zeros:
+      shoulder_pan: 0.0
+      shoulder_lift: 1.6569670531
+      elbow_flex: -1.5806712649
+      wrist_flex: 1.1529205386
+      wrist_roll: 0.0
+      gripper: 0.8

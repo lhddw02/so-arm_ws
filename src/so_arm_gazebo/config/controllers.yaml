@@ -1,0 +1,47 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+    use_sim_time: true
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+    gripper_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+arm_controller:
+  ros__parameters:
+    joints:
+      - shoulder_pan
+      - shoulder_lift
+      - elbow_flex
+      - wrist_flex
+      - wrist_roll
+    command_interfaces: [position]
+    state_interfaces: [position, velocity]
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.08
+      goal_time: 2.0
+      shoulder_pan: {trajectory: 0.15, goal: 0.03}
+      shoulder_lift: {trajectory: 0.15, goal: 0.03}
+      elbow_flex: {trajectory: 0.15, goal: 0.03}
+      wrist_flex: {trajectory: 0.15, goal: 0.03}
+      wrist_roll: {trajectory: 0.15, goal: 0.03}
+
+# The SO100 jaw is a revolute joint, so these positions are radians.
+# A trajectory controller offers the same FollowJointTrajectory action as the arm.
+gripper_controller:
+  ros__parameters:
+    joints: [gripper]
+    command_interfaces: [position]
+    state_interfaces: [position, velocity]
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.08
+      goal_time: 2.0
+      gripper: {trajectory: 0.2, goal: 0.04}
